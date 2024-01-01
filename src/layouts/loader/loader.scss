@@ -1,0 +1,63 @@
+@use "../../styles/abstract/typography" as typography;
+
+$color-text: var(--color-on-background);
+$color-background: var(--color-background);
+
+.loader-container {
+  background-color: $color-background;
+  color: $color-text;
+  display: grid;
+  inset: 0;
+  place-content: center;
+  position: fixed;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  z-index: 999;
+
+  svg {
+    width: 20rem;
+
+    text {
+      stroke-width: 2;
+      @include typography.loader-style;
+
+      &.text-body {
+        stroke: $color-text;
+        animation-name: animate-stroke;
+        animation-duration: 4s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+    z-index: -99999;
+  }
+}
+
+@keyframes animate-stroke {
+  0% {
+    fill: transparent;
+    stroke: $color-text;
+    stroke-width: 3;
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 32%;
+  }
+
+  50% {
+    fill: transparent;
+    stroke: $color-text;
+    stroke-width: 3;
+  }
+
+  80%,
+  100% {
+    fill: $color-text;
+    stroke: transparent;
+    stroke-width: 0;
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 32% 0;
+  }
+}
