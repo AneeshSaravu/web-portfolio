@@ -1,0 +1,25 @@
+@use "../base/fonts";
+
+$ff-poppins: "Poppins", sans-serif;
+$ff-roboto-condensed: "Roboto Condensed", sans-serif;
+
+@mixin brand-style {
+  font-family: $ff-poppins;
+  font-weight: 500;
+  /* max: 32px, min: 20px */
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+@mixin body-style {
+  font-family: $ff-roboto-condensed;
+  font-weight: 400;
+  /* max: 18px, min: 16px */
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+}
+
+@mixin loader-style {
+  font-family: $ff-poppins;
+  font-weight: 700;
+  font-size: 5rem;
+  letter-spacing: -4px;
+}

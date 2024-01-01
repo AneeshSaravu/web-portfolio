@@ -1,0 +1,22 @@
+@use "sass:map";
+@use "../abstract/color-scheme" as colors-scheme;
+@use "../abstract/typography" as typography;
+
+:root,
+html[data-theme="light"] {
+  @each $color-name, $color-value in colors-scheme.$light-scheme {
+    --color-#{$color-name}: #{$color-value};
+  }
+}
+
+html[data-theme="dark"] {
+  @each $color-name, $color-value in colors-scheme.$dark-scheme {
+    --color-#{$color-name}: #{$color-value};
+  }
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  @include typography.body-style;
+}

@@ -1,0 +1,8 @@
+@use "sass:map";
+@use "../base/breakpoints" as breakpoints;
+
+@mixin media-up($size) {
+  @media (min-width: map.get(breakpoints.$breakpoints-up, $size)) {
+    @content;
+  }
+}

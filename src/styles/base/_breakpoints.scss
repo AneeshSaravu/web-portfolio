@@ -1,0 +1,29 @@
+@use "sass:map";
+
+// Breakpoints is taken from the Bootstrap 5 breakpoints.
+
+$size-small: 576px;
+$size-medium: 768px;
+$size-large: 992px;
+$size-xlarge: 1200px;
+$size-xxlarge: 1400px;
+
+@function px-to-em($px, $base-font-size: 16px) {
+  @return calc($px / $base-font-size) * 1em;
+}
+
+$breakpoints-up: (
+  sm: px-to-em($size-small),
+  md: px-to-em($size-medium),
+  lg: px-to-em($size-large),
+  xl: px-to-em($size-xlarge),
+  xxl: px-to-em($size-xxlarge),
+);
+
+$breakpoints-down: (
+  sm: px-to-em($size-small) - 0.02em,
+  md: px-to-em($size-medium) - 0.02em,
+  lg: px-to-em($size-large) - 0.02em,
+  xl: px-to-em($size-xlarge) - 0.02em,
+  xxl: px-to-em($size-xxlarge) - 0.02em,
+);
