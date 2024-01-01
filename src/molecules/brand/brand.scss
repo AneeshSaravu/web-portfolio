@@ -1,0 +1,36 @@
+@use "../../styles/abstract/typography" as typography;
+@use "../../styles/utilities/media-queries" as media-queries;
+@use "../../atoms/icons/svg-icon" as svg-icon;
+
+.brand-container {
+  $color-brand: var(--color-secondary);
+
+  color: $color-brand;
+  cursor: default;
+  @include typography.brand-style;
+  transition-property: color;
+  transition-duration: 0.35s;
+  transition-timing-function: ease;
+  transition-delay: 0.35s;
+
+  span {
+    letter-spacing: clamp(1px, 1vw, 4px);
+
+    &:nth-of-type(1) {
+      margin-left: -4px;
+
+      @include media-queries.media-up(md) {
+        margin-left: -10px;
+      }
+    }
+
+    &:nth-of-type(2) {
+      color: var(--color-on-background);
+    }
+  }
+
+  &:hover {
+    color: var(--color-tertiary);
+    @include svg-icon.brand-hover-style;
+  }
+}
