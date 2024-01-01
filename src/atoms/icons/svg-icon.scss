@@ -1,0 +1,69 @@
+@use "../../styles/utilities/media-queries" as media-queries;
+
+.svg-icon {
+  // TODO: Add sizes for all media queries
+  &.large {
+    width: 32px;
+    height: 32px;
+
+    @include media-queries.media-up(md) {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include media-queries.media-up(lg) {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &__brand {
+    $cubic-transition: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+
+    .circle-in,
+    .circle-out {
+      transition-property: opacity;
+      transition-duration: 0.35s;
+    }
+
+    .circle-in {
+      opacity: 0.2;
+    }
+
+    .circle-out {
+      filter: drop-shadow(0px 0px 4px var(--color-secondary));
+    }
+
+    .box-in {
+      transform-origin: center;
+      transition-property: transform;
+      transition-duration: 0.35s;
+      transition-timing-function: $cubic-transition;
+    }
+
+    .line-diagonal {
+      opacity: 0.5;
+      transform-origin: center;
+      transition-property: transform;
+      transition-duration: 0.35s;
+      transition-timing-function: $cubic-transition;
+      box-shadow: 0px 0px 4px var(--color-secondary);
+      transition-delay: 0.35s;
+    }
+  }
+}
+
+@mixin brand-hover-style {
+  .box-in {
+    transform: rotate(45deg);
+  }
+
+  .circle-in,
+  .circle-out {
+    opacity: 0;
+  }
+
+  .line-diagonal {
+    transform: scale(1.5);
+  }
+}
